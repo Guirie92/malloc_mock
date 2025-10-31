@@ -6,7 +6,7 @@
 /*   By: guillsan <guillsan@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 20:30:28 by guillsan          #+#    #+#             */
-/*   Updated: 2025/10/31 20:53:10 by guillsan         ###   ########.fr       */
+/*   Updated: 2025/10/31 22:08:51 by guillsan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdatomic.h>
 #include <stdio.h>
 #include <limits.h>
+#include "malloc_mock.h"
 
 static atomic_int call_count = 0;
 static int fail_at = -1;
@@ -56,6 +57,13 @@ void	reset_malloc_mock(void)
 {
 	fail_at = -1;
 	atomic_store(&call_count, 0);
+}
+
+/* Force the nth malloc of the next "reset period" to fail */
+void	malloc_set_null(int nth)
+{
+	reset_malloc_mock();       /* reset global counter */
+	set_malloc_fail_at(nth);   /* force malloc #nth to fail */
 }
 
 /* interposed malloc */
