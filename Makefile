@@ -6,7 +6,7 @@
 #    By: guillsan <guillsan@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 20:56:48 by guillsan          #+#    #+#              #
-#    Updated: 2025/11/01 01:02:44 by guillsan         ###   ########.fr        #
+#    Updated: 2025/11/01 01:12:53 by guillsan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,7 @@ clean:
 	rm -f $(OBJS) $(MM_OBJ) $(EXEC)
 
 fclean: clean
-	rm -f *.o *.out
+	rm -f *.o *.out *.gch ../*.o ../*.out ../*.gch */*.o */*.out */*.gch
 
 re: fclean all
 
